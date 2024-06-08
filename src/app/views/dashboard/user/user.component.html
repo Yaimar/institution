@@ -1,0 +1,68 @@
+<app-menu></app-menu>
+<app-header></app-header>
+<br><br>
+<div class="container">
+  <div class="mx-auto">
+    <div class="container">
+      <!-- Botón de agregar en la parte superior derecha -->
+      <div class="d-flex justify-content-end mb-3">
+        <button type="button" class="btn btn-primary" (click)="showDialog()">
+          <i class="fas fa-plus mr-1"></i> Agregar
+        </button>
+      </div>
+      <div class="custom-table-container">
+        <p-table  class = "tableda" [value]="users" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]">
+          <ng-template pTemplate="header">
+            <tr>
+              <th class="small-text">ID</th>
+              <th class="small-text">Nombres</th>
+              <th class="small-text">Apellidos</th>
+              <th class="small-text">Correo</th>
+              <th class="small-text">Teléfono</th>
+              <th class="small-text">Asignaturas</th>
+              <th class="small-text">Editar</th>
+              <th class="small-text">Cursos asignados</th>
+              <th class="small-text">Status</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-user>
+            <tr>
+              <td class="small-text">{{user.id}}</td>
+              <td class="small-text">{{user.name}}</td>
+              <td class="small-text">{{user.lastName}}</td>
+              <td class="small-text">{{user.email}}</td>
+              <td class="small-text">{{user.phone}}</td>
+              <td class="small-text">
+                <ul>
+                  <li *ngFor="let subject of user.subjects">
+                    {{subject.subject.subject_name}}
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary" (click)="edit(user.id)">
+                  <i class="bi bi-pencil-square"></i> 
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-primary" (click)= "viewcourseuser(3,user.id)">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+              
+              <td>
+                <label class="switch">
+                  <input type="checkbox" [checked]="user.isActive" (click)="status(user.id,user.isActive)" >
+                  <span class="slider round"></span>
+                </label>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>
+<app-modal 
+  [visible]="isDialogVisible" 
+  (visibleChange)="isDialogVisible = $event"></app-modal>

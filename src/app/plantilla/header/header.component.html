@@ -1,0 +1,70 @@
+<nav [ngClass]="{ 'sidebar': true, 'locked': isSidebarLocked, 'close': isSidebarClosed }">
+  <div class="logo_items" (click)="toggleSidebar()">
+    <span class="nav_image">
+      <img src="../../../assets/img/Colegiobethel.png" alt="Logo" class="logo_image">
+    </span>
+    <br>
+    <svg width="300" height="200" viewBox="0 0 300 150" class="logo_name">
+      <path id="text-arc" d="M 20,20 A 140,140 0 0,0 280,20" fill="transparent" />
+      <text>
+        <textPath href="#text-arc" startOffset="50%" text-anchor="middle" fill="white" font-size="20">
+          Colegio Cristiano Bet-el
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <div class="menu_container">
+    <div class="menu_items">
+      <ul class="menu_item">
+        <div class="menu_title flex">
+          <span class="title">panel</span>
+          <span class="line"></span>
+        </div>
+        <li class="item">
+          <a (click)="home()" class="link flex">
+            <i class="bi bi-house-door"></i>
+            <span>Inicio</span>
+          </a>
+        </li>
+        <li class="item">
+          <a (click)="users()" class="link flex">
+            <i class="bi bi-person"></i>
+            <span>Docentes</span>
+          </a>
+        </li>
+        <li (click)="student()" class="item">
+          <a class="link flex">
+            <i class="bi bi-people"></i>
+            <span>Estudiantes</span>
+          </a>
+        </li>
+        <li (click)="course()" class="item">
+          <a class="link flex">
+            <i class="bi bi-journal-bookmark"></i>
+            <span>Grados</span>
+          </a>
+        </li>
+        <li (click)="roles()" class="item">
+          <a class="link flex">
+            <i class="bi bi-person-lock"></i> <span>Roles</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="menu_item">
+        <div class="menu_title flex">
+          <span class="title">configuración</span>
+          <span class="line"></span>
+        </div>
+        <li class="item">
+          <a href="#" class="link flex">
+            <i class="bi bi-gear"></i>
+            <span>configuración</span>
+          </a>
+        </li>
+      </ul>
+
+
+    </div>
+  </div>
+</nav>

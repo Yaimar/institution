@@ -1,0 +1,26 @@
+/* my-component.component.css */
+.containerOpt {
+    text-align: center;
+    position: relative;
+    top: 20px;
+    right: 300px; ;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .selectors {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .selector {
+    margin-right: 10px;
+  }
+  
+  .button {
+    margin-left: 10px;
+  }
+  

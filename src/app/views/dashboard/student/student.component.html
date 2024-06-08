@@ -1,0 +1,84 @@
+<app-header></app-header>
+<app-menu></app-menu>
+
+<br>
+<div class="containerOpt">
+  <!--     <h2 class="title">Filtrar por:</h2>
+ -->
+  <div class="selectors">
+
+
+    <div class="selector">
+      <p-dropdown [options]="useroption" placeholder="Docentes" (onChange)="onuserChange($event)"></p-dropdown>
+    </div>
+
+    <div class="selector">
+      <p-dropdown [options]="subjectOptions" placeholder="Asignatura" (onChange)="onSubjectChange($event)"></p-dropdown>
+    </div>
+
+    <div class="selector">
+      <p-dropdown [options]="gradeOptions" placeholder="Grado" (onChange)="onGradeChange($event)"></p-dropdown>
+    </div>
+    <!--  <div class="button">
+        <button pButton type="button" label="Buscar" click="Buscar()" ></button>
+      </div> -->
+  </div>
+</div>
+<div class="container">
+  <div class="mx-auto">
+    <div class="container">
+
+      <!-- Botón de agregar en la parte superior derecha -->
+      <div class="d-flex justify-content-end mb-3">
+        <button type="button" class="btn btn-primary" (click)="showDialo()">
+          <i class="fas fa-plus mr-1"></i> Agregar
+        </button>
+      </div>
+
+      <p-table [value]="student" [paginator]="true" [rows]="6" [rowsPerPageOptions]="[5,10,20]">
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="small-text">ID</th>
+            <th class="small-text">Nombres</th>
+            <th class="small-text">Apellidos</th>
+            <th class="small-text">Correo</th>
+            <th class="small-text">Teléfono</th>
+            <th class="small-text">Curso</th>
+            <th class="small-text">Editar</th>
+            <th class="small-text">Status</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-student>
+          <tr>
+            <td class="small-text">{{ student.id }}</td>
+            <td class="small-text">{{ student.name }}</td>
+            <td class="small-text">{{ student.lastName }}</td>
+            <td class="small-text">{{ student.email }}</td>
+            <td>{{ student.phone }}</td>
+            <td class="small-text">
+              <ul>
+                <li *ngFor="let course of student.courses">
+                  {{course.course.course_name}}
+                </li>
+              </ul>
+            </td>
+
+            <td>
+              <button type="button" class="btn btn-primary">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
+            <td>
+              <label class="switch">
+                <input type="checkbox" [checked]="student.isActive" (click)="status(student.id,student.isActive)">
+                <span class="slider round"></span>
+              </label>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+<br><br>
+<app-modal [visible]="isDialogVisib" (visibleChange)="isDialogVisib = $event"></app-modal>

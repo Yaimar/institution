@@ -1,0 +1,71 @@
+<p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '25rem' }" [closable]="false">
+    <ng-template pTemplate="header">
+      <div class="inline-flex align-items-center justify-content-between gap-2 w-full">
+        <div class="inline-flex align-items-center gap-2">
+          <p-avatar image="../../../assets/img/Colegiobethel.png" shape="circle"></p-avatar>
+          <span class="font-bold white-space-nowrap">
+            Colegio Cristiano Bet-el
+          </span>
+        </div>
+      </div>
+    </ng-template>
+    <span class="p-text-secondary block mb-5">Colegio</span><br>
+    <label  *ngIf="selectM !== 3" for="username" class="font-semibold w-6rem">Nombres</label>
+    <div *ngIf="selectM !== 3" class="flex align-items-center gap-3 mb-3">
+      <input pInputText id="username" class="flex-auto" autocomplete="off" [(ngModel)]="username" />
+    </div>
+  
+    <label *ngIf="selectM !== 3" for="lastName" class="font-semibold w-6rem">Apellidos</label>
+    <div  *ngIf="selectM !== 3" class="flex align-items-center gap-3 mb-3">
+      <input pInputText id="lastName" class="flex-auto" autocomplete="off" [(ngModel)]="lastName" />
+    </div>
+  
+   
+    <label *ngIf="selectM !== 3" for="email" class="font-semibold w-6rem">Correo</label>
+    <div *ngIf="selectM !== 3"  class="flex align-items-center gap-3 mb-3">
+      <input pInputText id="email" class="flex-auto" autocomplete="off" [(ngModel)]="email" />
+    </div>
+
+    <label *ngIf="selectM !== 3" for="phone" class="font-semibold w-6rem">Teléfono</label>
+    <div *ngIf="selectM !== 3"  class="flex align-items-center gap-3 mb-3">
+      <input pInputText id="phone" class="flex-auto" autocomplete="off" [(ngModel)]="phone" />
+    </div>
+  
+    <div *ngIf="selectM === 2"  class="selector">
+      <p-dropdown  optionLabel="course_name"   [options]="optionmulticourse" placeholder="Cursos" [(ngModel)]="selectedcourse"></p-dropdown>
+    </div>
+
+    <label *ngIf="selectM === 1" for="subject" class="font-semibold w-6rem">Asignaturas</label>
+    <div *ngIf="selectM === 1" class="flex align-items-center gap-3 mb-3">
+      <p-multiSelect 
+          [options]="subjectOptions" 
+          [(ngModel)]="selectedSubjects" 
+          optionLabel="subject_name" 
+          placeholder="Asignaturas">
+      </p-multiSelect>
+    </div>
+
+    <label *ngIf="selectM === 1" for="courseUser" class="font-semibold w-6rem">Cursos</label>
+      <div *ngIf="selectM === 1" class="flex align-items-center gap-3 mb-3">
+        <p-multiSelect 
+            [options]="optionmulticourse" 
+            [(ngModel)]="selectedcourse" 
+            optionLabel="course_name" 
+            placeholder="Cursos">
+        </p-multiSelect>
+  </div>
+
+  <div *ngIf="selectM === 3" class="flex align-items-center gap-3 mb-3">
+    <ul>
+      <li *ngFor="let course of courseUser">
+        {{course}}
+      </li>
+    </ul>
+
+  </div>
+    <ng-template pTemplate="footer">
+      <p-button   label="Salir" [text]="true" severity="secondary" (click)="hideDialog()"></p-button>
+      <p-button *ngIf="selectM !== 3" label="Guardar"  [outlined]="true" severity="secondary" (click)="saveUser()"></p-button>
+    </ng-template>
+  </p-dialog>
+  

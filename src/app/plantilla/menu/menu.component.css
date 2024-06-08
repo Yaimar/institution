@@ -1,0 +1,16 @@
+.custom-navbar {
+
+    background: #4070f4;
+
+}
+
+.nombre{ 
+position: relative;
+right: 10px;
+font-family:Arial, Helvetica, sans-serif; 
+font-size: 17px;
+top: 5px;
+color: white;
+
+
+}
